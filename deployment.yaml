@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-1-model
+  namespace: app-1-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-1-model
+  template:
+    metadata:
+      labels:
+        app: app-1-model
+    spec:
+      serviceAccountName: app-1-ksa # Assigning GCP Service Account
+      containers:
+        - name: app-1
+          image: gcr.io/learn-vertex-pipelines/app-1:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PROJECT_ID
+              value: "learn-vertex-pipelines"
+            - name: ENDPOINT_ID
+              value: "2289449290843553792"

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-1-model
+  namespace: app-1-namespace
+spec:
+  selector:
+    app: app-1-model
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080 # The container's exposed port
+  type: LoadBalancer
