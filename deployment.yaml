@@ -13,7 +13,7 @@ spec:
       labels:
         app: app-1-model
     spec:
-      serviceAccountName: app-1-ksa # Assigning GCP Service Account
+      serviceAccountName: app-1-ksa
       containers:
         - name: app-1
           image: gcr.io/learn-vertex-pipelines/app-1:latest

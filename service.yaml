@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-1-model
+  name: app-1-service
   namespace: app-1-namespace
+  annotations:
+    networking.gke.io/load-balancer-type: "Internal"
 spec:
+  type: LoadBalancer
   selector:
     app: app-1-model
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080 # The container's exposed port
-  type: LoadBalancer
+      targetPort: 8080
